@@ -43,35 +43,6 @@ How you configure this depends on your tool — consult your tool's documentatio
 └── README.md
 ```
 
-## Linting
-
-Run all lint checks and schema validation:
-
-```bash
-make check
-```
-
-Run just the lint checks (frontmatter, references, tokens, cross-references, parity):
-
-```bash
-make lint
-```
-
-Individual check groups are available via `make lint-frontmatter`, `make lint-references`, `make lint-tokens`, `make lint-crossrefs`, and `make lint-parity`.
-
-## Branch Protection
-
-To make the lint check required before merging PRs:
-
-1. Go to the repo **Settings → Branches**
-2. Click **Add branch protection rule** (or edit the existing `main` rule)
-3. Set **Branch name pattern** to `main`
-4. Enable **Require status checks to pass before merging**
-5. Search for and select the **Lint** status check
-6. Save changes
-
-After this, PRs targeting `main` cannot be merged until `make check` passes.
-
 ## Learn More
 
 - [Nova Act SDK](https://github.com/aws/nova-act) — the SDK itself
