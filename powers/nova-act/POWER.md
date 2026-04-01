@@ -2,6 +2,7 @@
 name: "nova-act"
 displayName: "Amazon Nova Act Browser Automation"
 description: "AI-powered browser automation SDK for web scraping, testing, and workflow automation. Use when automating web browsers, extracting data from websites, testing web applications, or building web automation workflows. Supports both API key and AWS credential authentication."
+author: "Amazon"
 keywords: ["browser", "automation", "web", "scraping", "testing", "playwright", "selenium", "nova", "act", "aws", "amazon", "workflow", "bot"]
 ---
 
@@ -86,3 +87,5 @@ Full testing guide: `steering/qa_tests.md`
 | `steering/gherkin_testing.md` | **Gherkin testing** — `.feature` file writing, `qa-plan` compilation, session export → Gherkin conversion |
 | `steering/flow_discovery.md` | **Flow discovery** — live app exploration → codebase mapping, developer onboarding docs |
 | `steering/bug_reproduction.md` | **Bug reproduction** — reproduce → capture evidence → export → regression test |
+
+This power uses the Nova Act SDK which is licensed under the Apache-2.0 license.
