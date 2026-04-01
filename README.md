@@ -46,7 +46,7 @@ How you configure this depends on your tool — consult your tool's documentatio
 ## Learn More
 
 - [Nova Act SDK](https://github.com/aws/nova-act) — the SDK itself
-- [Nova Act Documentation](https://docs.aws.amazon.com/nova/latest/userguide/using-nova-act.html) — official AWS docs
+- [Nova Act Documentation](https://docs.aws.amazon.com/nova-act/latest/userguide/what-is-nova-act.html) — official AWS docs
 - [Agent Skills Specification](https://agentskills.io/specification) — the skill format standard
 - [Kiro](https://kiro.dev) — the IDE that supports powers
 
