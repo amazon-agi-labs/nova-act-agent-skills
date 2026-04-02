@@ -32,6 +32,7 @@
 ### Session Rules
 - **NEVER close a session** unless the user explicitly asks you to. Sessions are expensive to create and the user may want to return to them.
 - **NEVER close all sessions** unless the user explicitly asks you to.
+- **NEVER kill Chrome or Chromium processes** (e.g., `pkill chrome`, `kill -9 $(pgrep chrome)`, `killall Google Chrome`). Nova Act manages its own browser lifecycle. Killing browser processes externally will corrupt session state and break automation. If a browser appears stuck, use `act browser sessions` to check status, or start a new session.
 
 The browser CLI (`act browser`) is the preferred way for coding agents to interact with web browsers. It provides persistent sessions, structured output, and composable commands that work naturally in tool-use workflows.
 

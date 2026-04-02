@@ -47,6 +47,8 @@ Default to `execute` with a detailed plan. Use individual commands (`goto`, `ask
 
 > **IMPORTANT**: Before running any browser command, ask the user whether they want headed (visible browser) or headless mode, unless they have already specified. Use `--headed` or `--headless` accordingly.
 
+> ⚠️ **CRITICAL: NEVER kill Chrome or Chromium processes** (e.g., `pkill chrome`, `kill -9 $(pgrep chrome)`, `killall Google Chrome`). Nova Act manages its own browser lifecycle. Killing browser processes externally will corrupt session state and break automation. If a browser appears stuck, use `act browser sessions` to check status, or start a new session.
+
 Full command reference: `steering/browser_cli.md`
 
 **Option B: Python Script (recommended for repeatable automation)**
