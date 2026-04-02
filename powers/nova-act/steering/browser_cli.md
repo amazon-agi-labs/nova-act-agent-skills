@@ -285,6 +285,31 @@ result: "Sales email: sales@example.com, Phone: 1-800-EXAMPLE, Live chat availab
 log_dir: ~/.act_cli/browser/session_logs/pricing/20260330_161012_extract/
 ```
 
+### Good: Localhost HTTPS Server Testing
+
+```
+# Agent decision: User has a local dev server on https://localhost:8443 with self-signed cert → need SSL bypass flags
+$ act browser goto https://localhost:8443 --session-id dev --launch-arg=--ignore-certificate-errors --ignore-https-errors
+status: success
+transition: Navigated to localhost:8443.
+log_dir: ~/.act_cli/browser/session_logs/dev/20260402_110000_goto/
+
+# Agent decision: Multi-step objective on the local app → execute
+$ act browser execute "1. Click the login button 2. Fill username 'admin' and password 'test' 3. Submit the form" --session-id dev --nova-arg max_steps=15
+status: success
+reached: true
+transition: Logged in successfully, dashboard displayed.
+log_dir: ~/.act_cli/browser/session_logs/dev/20260402_110015_execute/
+
+# Agent decision: Need structured data from the local app → extract
+$ act browser extract "List all items in the dashboard table" --schema list --session-id dev --nova-arg max_steps=15
+status: success
+result: [{"name": "Item 1", "status": "Active"}, ...]
+log_dir: ~/.act_cli/browser/session_logs/dev/20260402_110030_extract/
+```
+
+**Key**: The `--launch-arg=--ignore-certificate-errors` and `--ignore-https-errors` flags are only needed on the **first command** that creates the session (here, `goto`). Subsequent commands in the same session inherit the browser settings. Only use these flags for **localhost** — production URLs should use valid certificates.
+
 ### Anti-Pattern: Slow-Scrolling Prompts
 
 ```bash
