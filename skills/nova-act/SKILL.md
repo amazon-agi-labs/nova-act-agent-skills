@@ -51,6 +51,12 @@ Default to `execute` with a detailed plan. Use individual commands (`goto`, `ask
 
 > ⚠️ **CRITICAL: NEVER kill Chrome or Chromium processes** (e.g., `pkill chrome`, `kill -9 $(pgrep chrome)`, `killall Google Chrome`). Nova Act manages its own browser lifecycle. Killing browser processes externally will corrupt session state and break automation. If a browser appears stuck, use `act browser sessions` to check status, or start a new session.
 
+> 💡 **Localhost HTTPS Testing**: When testing against a local HTTPS server (e.g., `https://localhost:8443`), Chrome will reject self-signed certificates by default. Add `--launch-arg=--ignore-certificate-errors --ignore-https-errors` to bypass this:
+> ```bash
+> act browser goto https://localhost:8443 --session-id dev --launch-arg=--ignore-certificate-errors --ignore-https-errors
+> ```
+> ⚠️ Only use `--ignore-certificate-errors` for **localhost** development servers. For non-local URLs, valid certificates should be used unless you have a specific reason to bypass validation.
+
 Full command reference: `references/browser_cli.md`
 
 **Option B: Python Script (recommended for repeatable automation)**
