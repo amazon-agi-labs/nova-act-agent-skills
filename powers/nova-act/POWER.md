@@ -1,7 +1,7 @@
 ---
 name: "nova-act"
 displayName: "Amazon Nova Act Browser Automation"
-description: "AI-powered browser automation SDK for web scraping, testing, and workflow automation. Use when automating web browsers, extracting data from websites, testing web applications, or building web automation workflows. Supports both API key and AWS credential authentication."
+description: "Nova Act lets you test your application like a human would, then turns your testing into natural language QA workflows."
 author: "Amazon"
 keywords: ["browser", "automation", "web", "scraping", "testing", "playwright", "selenium", "nova", "act", "aws", "amazon", "workflow", "bot"]
 ---
