@@ -1,7 +1,7 @@
 ---
 name: "nova-act"
 displayName: "Amazon Nova Act Browser Automation"
-description: "Nova Act lets you test your application like a human would, then turns your testing into natural language QA workflows."
+description: "Nova Act tests your application like a human would, then turns your testing into natural language QA workflows."
 author: "Amazon"
 keywords: ["browser", "automation", "web", "scraping", "testing", "playwright", "selenium", "nova", "act", "aws", "amazon", "workflow", "bot"]
 ---
