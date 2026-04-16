@@ -21,6 +21,6 @@ lint-parity:
 	python3 -m scripts.lint_skill --check parity
 
 validate:
-	skills-ref validate $(SKILL_DIR)
+	npx skills-ref validate $(SKILL_DIR)
 
 check: lint validate

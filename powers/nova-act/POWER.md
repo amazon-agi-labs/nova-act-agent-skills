@@ -32,6 +32,8 @@ Full setup details: `steering/authentication.md`
 | Convert manual tests to automated | `steering/gherkin_testing.md` |
 | Understand a codebase via its UI | `steering/flow_discovery.md` |
 | Reproduce a bug | `steering/bug_reproduction.md` |
+| Iterate on / refine automation prompts | `steering/workflow_refinement.md` |
+| Generate mock sites from real site recordings | `steering/mock_generation.md` |
 | Deploy to production | `steering/deployment_cli.md` |
 
 **Option A: Browser CLI (recommended for exploration and agent tool-use)**
@@ -95,5 +97,8 @@ Full testing guide: `steering/qa_tests.md`
 | `steering/gherkin_testing.md` | **Gherkin testing** — `.feature` file writing, `qa-plan` compilation, session export → Gherkin conversion |
 | `steering/flow_discovery.md` | **Flow discovery** — live app exploration → codebase mapping, developer onboarding docs |
 | `steering/bug_reproduction.md` | **Bug reproduction** — reproduce → capture evidence → export → regression test |
+| `steering/parallel_sessions.md` | **Parallel sessions** — run multiple browser sessions concurrently with subagents, chunking, session limits |
+| `steering/workflow_refinement.md` | **Workflow refinement** — analyze chain-of-thought, identify failure patterns, revise and validate browser automation workflows |
+| `steering/mock_generation.md` | **Mock generation** — generate static HTML mock sites from real site trajectories for fast, offline iteration |
 
 This power uses the Nova Act SDK which is licensed under the Apache-2.0 license.

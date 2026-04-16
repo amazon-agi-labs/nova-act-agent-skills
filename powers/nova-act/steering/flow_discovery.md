@@ -66,6 +66,7 @@ User clicks "Checkout" → /checkout → CheckoutPage.tsx → POST /api/checkout
 4. New developer sees: "when user clicks Checkout, it hits `/api/checkout` handled by `CheckoutController` in `src/controllers/checkout.ts`"
 
 ## Related Files
+- `workflow_refinement.md` — after discovering flows, write and refine automation prompts
 - `gherkin_testing.md` — Gherkin pipeline and session export conversion
 - `browser_cli.md` — Full CLI command reference
 - `bug_reproduction.md` — Reproduce → evidence → regression test

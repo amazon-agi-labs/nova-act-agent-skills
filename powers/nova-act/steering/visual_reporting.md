@@ -107,3 +107,10 @@ Keep screenshots alongside the report in a predictable directory structure. Copy
 - **Include `failure.png` for errors** — documents what the page looked like when something went wrong.
 - **One report per session** — group all commands from a single session into one report for coherent narrative.
 - **Link to log dirs** — let readers drill into `log.txt` or `snapshot.yaml` for details beyond the summary.
+
+## Related Files
+- `workflow_refinement.md` — iterative workflow testing that generates session artifacts for reporting
+- `parallel_sessions.md` — parallel runs that produce multiple sessions to report on
+- `trajectory_analysis.md` — deep analysis of trajectory JSON files
+- `browser_cli.md` — CLI commands and session log directory structure
+- `session_logs.md` — log file formats and directory layout

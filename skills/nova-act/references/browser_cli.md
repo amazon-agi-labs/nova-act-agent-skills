@@ -70,10 +70,19 @@ Every command writes artifacts to `~/.act_cli/browser/session_logs/<session>/<ti
 | `content.txt` | get-content | Extracted page content |
 | `page.pdf` | pdf | Generated PDF |
 
-**Observability options** (in priority order):
-1. **`steps.yaml`** — Understand what happened during multi-step commands. Usually sufficient.
-2. **`snapshot.yaml`** — Element refs for targeted follow-up (grep for keywords to find refs like `e14`).
-3. **Full logs** (`log.txt`, screenshots) — Rarely needed. Use when steps.yaml doesn't explain a failure.
+**Observability** (in priority order):
+1. **Command stdout** — Every command prints a structured result. Key fields:
+   - `status: success|error` — did the command succeed?
+   - `transition:` — human-readable summary of what changed (elements appeared/removed, page navigated)
+   - `answer:` — response from `ask` commands
+   - `log_dir:` — path to detailed artifacts for this command
+   Read stdout first — it's usually enough to know if a step worked and what happened.
+   - On **success**: check `transition:` to confirm the expected change happened. If it says "No visible changes detected", the model may not have found what it was looking for — read `steps.yaml` to understand why.
+   - On **error**: check the `message:` and `suggestions:` fields. Common errors include session not found, timeout, and invalid screen resolution. If the error is unclear, check `failure.png` in the `log_dir`.
+2. **`steps.yaml`** (in `log_dir`) — Action-by-action trace for multi-step commands. Shows each action type (think/click/scroll/return) with the model's chain-of-thought reasoning in the `detail` field and element transitions (appeared/removed). Read this when you need to understand what the model did and why.
+3. **Verbose mode (`-v`)** — Streams the full Nova Act trace to stdout in real-time, including `think()` content. Use when you want to watch the model's reasoning live without waiting for the command to finish.
+4. **`snapshot.yaml`** (in `log_dir`) — Accessibility tree with element refs (e1, e2...) for targeted follow-up. Grep for keywords to find refs: `grep -i "submit" snapshot.yaml` → `e14: button "Submit"` → `act browser click e14`.
+5. **Screenshots** (`screenshot.png`, `before.png`, `failure.png` in `log_dir`) — Visual state. Rarely needed unless debugging layout issues.
 
 ## Commands
 
@@ -180,6 +189,30 @@ act browser fill-form '{"First Name": "Jane", "Last Name": "Doe", "Plan": "Enter
 
 # ❌ Wrong — plain text description
 act browser fill-form "Fill name 'Jane Doe', email 'jane@example.com'" --session-id work
+```
+
+### type Command: fill() vs keyboard.type()
+
+The `type` command uses Playwright under the hood. Its behavior depends on the `--append` flag:
+
+- **Default (no `--append`)** → uses Playwright `fill()` — clears the field and sets the value in one shot. Fast and reliable for standard single input fields.
+- **`--append`** → uses Playwright `locator.type()` — types character by character into the target locator, appending to existing content.
+
+Neither mode is equivalent to `page.keyboard.type()`. The key difference: `page.keyboard.type()` sends keystrokes to **whatever element currently has focus**, so if JavaScript moves focus between keystrokes (e.g., split OTP inputs that auto-advance to the next field), each keystroke lands in the right place. The CLI `type` command operates on a **resolved locator**, so keystrokes always go to the same element regardless of focus changes.
+
+**When this matters:**
+- Standard single input fields (email, password, search) → `type` works fine
+- Split OTP/verification code inputs (multiple single-digit fields with JS auto-advance) → `type` will dump all characters into the first field. Use `execute "Type 123456 into the OTP input field(s)"` instead — the AI handles any input pattern.
+
+```bash
+# ✅ Standard input field — type works
+act browser type "test@example.com" --target "email field" --session-id work
+
+# ❌ Split OTP fields — type dumps all digits into first field
+act browser type "123456" --target "first OTP digit" --session-id work
+
+# ✅ Split OTP fields — execute lets the AI handle it
+act browser execute "Type 123456 into the verification code input fields" --session-id work
 ```
 
 ### Snapshot YAML Grep Technique
@@ -404,3 +437,7 @@ Supported browsers: Chrome, Chromium, Edge, Brave, any Chromium-based browser.
 - `gherkin_testing.md` — Gherkin-to-CLI pipeline and session export conversion
 - `flow_discovery.md` — Live app exploration → codebase mapping
 - `bug_reproduction.md` — Reproduce → evidence → regression test
+- `parallel_sessions.md` — Run multiple browser sessions concurrently with subagents
+- `workflow_refinement.md` — Analyze chain-of-thought and iterate on workflows
+- `visual_reporting.md` — Build markdown reports from session artifacts
+- `trajectory_analysis.md` — Deep analysis of trajectory JSON files

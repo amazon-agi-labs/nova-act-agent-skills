@@ -145,3 +145,10 @@ print(json.dumps(summary, indent=2))
 4. **Report findings**: Total action count, step-by-step action breakdown, anomalies, and prompt improvement suggestions.
 
 5. **Drill into specific steps on demand**: Only extract screenshots or DOM snapshots for a specific step when asked.
+
+## Related Files
+- `workflow_refinement.md` — use trajectory analysis to identify failure patterns and improve workflows
+- `mock_generation.md` — use trajectory data to generate static HTML mock sites
+- `visual_reporting.md` — build markdown reports from session artifacts including trajectories
+- `browser_cli.md` — CLI commands that generate trajectory files
+- `session_logs.md` — directory structure where trajectory files are stored
