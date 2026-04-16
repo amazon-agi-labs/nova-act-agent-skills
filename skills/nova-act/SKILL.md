@@ -34,6 +34,8 @@ Full setup details: `references/authentication.md`
 | Convert manual tests to automated | `references/gherkin_testing.md` |
 | Understand a codebase via its UI | `references/flow_discovery.md` |
 | Reproduce a bug | `references/bug_reproduction.md` |
+| Iterate on / refine automation prompts | `references/workflow_refinement.md` |
+| Generate mock sites from real site recordings | `references/mock_generation.md` |
 | Deploy to production | `references/deployment_cli.md` |
 
 **Option A: Browser CLI (recommended for exploration and agent tool-use)**
@@ -97,5 +99,8 @@ Full testing guide: `references/qa_tests.md`
 | `references/gherkin_testing.md` | **Gherkin testing** — `.feature` file writing, `qa-plan` compilation, session export → Gherkin conversion |
 | `references/flow_discovery.md` | **Flow discovery** — live app exploration → codebase mapping, developer onboarding docs |
 | `references/bug_reproduction.md` | **Bug reproduction** — reproduce → capture evidence → export → regression test |
+| `references/parallel_sessions.md` | **Parallel sessions** — run multiple browser sessions concurrently with subagents, chunking, session limits |
+| `references/workflow_refinement.md` | **Workflow refinement** — analyze chain-of-thought, identify failure patterns, revise and validate browser automation workflows |
+| `references/mock_generation.md` | **Mock generation** — generate static HTML mock sites from real site trajectories for fast, offline iteration |
 
 This skill uses the Nova Act SDK which is licensed under the Apache-2.0 license.
