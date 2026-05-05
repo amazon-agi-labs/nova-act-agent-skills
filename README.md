@@ -15,9 +15,15 @@ Both contain the same core content — onboarding guides, authentication pattern
 
 ## Using the Agent Skill
 
-Point your AI coding assistant to the `skills/nova-act/` directory. The assistant will read `SKILL.md` for onboarding and core guidance, then load individual reference files from `skills/nova-act/references/` as needed.
+This skill follows the [Agent Skills](https://agentskills.io) format and is compatible with a [large number of AI tools and agentic clients](https://agentskills.io/clients), including [Kiro IDE](https://kiro.dev/docs/), [Kiro CLI](https://kiro.dev/docs/cli/), Claude Code, and Codex.
 
-How you configure this depends on your tool — consult your tool's documentation for how to add custom skills or context.
+Install with the [skills CLI](https://github.com/vercel-labs/skills) for an interactive setup with your coding agents:
+
+```bash
+npx skills@latest add amazon-agi-labs/nova-act-agent-skills
+```
+
+Or copy/symlink `skills/nova-act/` into your agent's skills directory manually.
 
 ## Using the Kiro Power
 
