@@ -6,8 +6,6 @@ The UI Verification skill collapses this gap. It lets the agent check its own wo
 
 The skill spins up the rendered application and runs verification automatically. Deterministic checks read computed CSS directly from the DOM and catch visual deviations immediately without AI involvement. Behavioral checks follow, the agent walks user flows via [Nova Act](https://aws.amazon.com/nova/act/), interacting with the application the way a human tester would to catch functional regressions.
 
-![](./verification.gif)
-
 ## What's Included
 
 ```
