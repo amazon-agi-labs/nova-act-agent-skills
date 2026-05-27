@@ -1,29 +1,59 @@
-# Nova Act Agent Skill
+# Nova Act Agent Skills
 
-An [agent skill](https://agentskills.io) and [Kiro power](https://kiro.dev/docs/powers/) for [Amazon Nova Act](https://github.com/aws/nova-act) — an AI-powered browser automation SDK for web scraping, testing, and workflow automation.
+Agent skills and a [Kiro power](https://kiro.dev/docs/powers/) for [Amazon Nova Act](https://github.com/aws/nova-act) — an AI-powered browser automation SDK for web scraping, testing, and workflow automation.
 
 ## What's Included
 
-This repository contains two formats of the same Nova Act guidance:
+This repository contains skills and powers that extend AI coding assistants with Nova Act capabilities:
 
 | Format | Directory | Entry Point | For |
 |--------|-----------|-------------|-----|
-| Agent Skill | `skills/nova-act/` | `SKILL.md` | AI coding assistants that support the [Agent Skills](https://agentskills.io) specification |
-| Kiro Power | `powers/nova-act/` | `POWER.md` | [Kiro](https://kiro.dev) IDE |
+| Agent Skill — Nova Act | `skills/nova-act/` | `SKILL.md` | Browser automation, data extraction, QA testing, workflow automation |
+| Agent Skill — UI Verification | `skills/ui-verification/` | `SKILL.md` | Visual and flow verification of live web apps against design specs |
+| Kiro Power — Nova Act | `powers/nova-act/` | `POWER.md` | [Kiro](https://kiro.dev) IDE power for Nova Act |
 
-Both contain the same core content — onboarding guides, authentication patterns, data extraction techniques, QA testing patterns, observability tools, and more.
+All skills follow the [Agent Skills](https://agentskills.io) specification and are compatible with [Kiro IDE](https://kiro.dev/docs/), [Kiro CLI](https://kiro.dev/docs/cli/), Claude Code, Codex, and other [supported clients](https://agentskills.io/clients).
 
-## Using the Agent Skill
+## Skills
 
-This skill follows the [Agent Skills](https://agentskills.io) format and is compatible with a [large number of AI tools and agentic clients](https://agentskills.io/clients), including [Kiro IDE](https://kiro.dev/docs/), [Kiro CLI](https://kiro.dev/docs/cli/), Claude Code, and Codex.
-
-Install with the [skills CLI](https://github.com/vercel-labs/skills) for an interactive setup with your coding agents:
+Install both skills with the [skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
 npx skills@latest add amazon-agi-labs/nova-act-agent-skills
 ```
 
-Or copy/symlink `skills/nova-act/` into your agent's skills directory manually.
+Or copy the skill directories manually:
+
+```bash
+# Kiro (global)
+cp -r skills/nova-act/ ~/.kiro/skills/nova-act/
+cp -r skills/ui-verification/ ~/.kiro/skills/ui-verification/
+
+# Kiro (project-level)
+cp -r skills/nova-act/ .kiro/skills/nova-act/
+cp -r skills/ui-verification/ .kiro/skills/ui-verification/
+
+# Claude Code
+cp -r skills/nova-act/ .claude/skills/nova-act/
+cp -r skills/ui-verification/ .claude/skills/ui-verification/
+```
+
+### Nova Act
+
+Browser automation skill for web scraping, testing, and workflow automation. Covers authentication, session management, data extraction, parallel sessions, Playwright interop, and more.
+
+See [docs/nova-act.md](docs/nova-act.md) for full usage details.
+
+### UI Verification
+
+Verifies whether a live web app matches its design specification. Two modes:
+
+- **Visual verification** — deterministic CSS checks against the live DOM (colors, typography, spacing, components, accessibility)
+- **Flow verification** — executes flow scenarios end-to-end via Nova Act
+
+Generates a combined report with annotated screenshots and per-flow detail. Requires the [amazon-nova-act-mcp](https://github.com/amazon-agi-labs/amazon-nova-act-mcp) server with the `ui-verification` toolset enabled.
+
+See [docs/ui-verification.md](docs/ui-verification.md) for full usage details.
 
 ## Using the Kiro Power
 
@@ -33,17 +63,26 @@ Or copy/symlink `skills/nova-act/` into your agent's skills directory manually.
 4. Point to the `powers/nova-act/` directory in this repository
 5. The power will appear in your powers list
 
+See [docs/kiro-power.md](docs/kiro-power.md) for full usage details.
+
 ## Repository Structure
 
 ```
 ├── skills/
-│   └── nova-act/              # Agent Skill (agentskills.io format)
+│   ├── nova-act/              # Agent Skill — browser automation
+│   │   ├── SKILL.md           # Main skill definition
+│   │   └── references/        # Detailed reference documents
+│   └── ui-verification/       # Agent Skill — visual + flow verification
 │       ├── SKILL.md           # Main skill definition
 │       └── references/        # Detailed reference documents
 ├── powers/
 │   └── nova-act/              # Kiro Power
 │       ├── POWER.md           # Main power definition
 │       └── steering/          # Steering documents
+├── docs/                      # Usage guides
+│   ├── nova-act.md            # Nova Act skill guide
+│   ├── ui-verification.md     # UI Verification skill guide
+│   └── kiro-power.md          # Kiro Power guide
 ├── LICENSE                    # Apache-2.0
 ├── CONTRIBUTING.md
 └── README.md
