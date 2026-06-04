@@ -1,6 +1,6 @@
 # Nova Act Agent Skills
 
-Agent skills and a [Kiro power](https://kiro.dev/docs/powers/) for [Amazon Nova Act](https://github.com/aws/nova-act) — an AI-powered browser automation SDK for web scraping, testing, and workflow automation.
+Agent skills and a [Kiro power](https://kiro.dev/docs/powers/) for [Amazon Nova Act](https://github.com/aws/nova-act) — an AI-powered browser automation SDK for extracting web information, testing, and workflow automation.
 
 ## What's Included
 
@@ -40,7 +40,7 @@ cp -r skills/ui-verification/ .claude/skills/ui-verification/
 
 ### Nova Act
 
-Browser automation skill for web scraping, testing, and workflow automation. Covers authentication, session management, data extraction, parallel sessions, Playwright interop, and more.
+Browser automation skill for extracting web information, testing, and workflow automation. Covers authentication, session management, data extraction, parallel sessions, Playwright interop, and more.
 
 See [docs/nova-act.md](docs/nova-act.md) for full usage details.
 
